@@ -1,0 +1,28 @@
+Here we deploy a simple python application that exposes a REST endpoint that returns the following
+ JSON payload with the current timestamp and a static message:
+{
+  “message”: “Automate all the things!”,
+  “timestamp”: 1529729125
+}
+
+
+## Prerequisites
+1.  install Docker cli
+2.  Install Terraform
+3.  Own an active AWS account
+4.  Install AWS CLi
+5.  Pushed app docker image to ECR
+
+### Install docker
+Docker installation steps using default repository from Ubuntu
+Update local packages by executing below command:
+```sudo apt update```
+``` sudo apt install docker.io -y ```
+
+### Add Ubuntu user to Docker group
+``` sudo usermod -aG docker $USER ```
+
+### Install Terraform
+``` wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+ sudo apt update && sudo apt install terraform ```
