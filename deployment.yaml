@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xyz-app-deployment
+spec:
+  replicas: 3  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: xyz-app
+  template:
+    metadata:
+      labels:
+        app: xyz-app
+    spec:
+      containers:
+      - name: xyz-app-container
+        image: 910883278292.dkr.ecr.us-east-1.amazonaws.com/devopsbank-demo1:latest  # Replace with your ECR repository URL and image tag
+        ports:
+        - containerPort: 80  # Port on which your application inside the container listens
