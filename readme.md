@@ -23,11 +23,11 @@ Update local packages by executing below command:
 ``` sudo usermod -aG docker $USER ```
 
 ### Install AWS CLi
-    ```
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"/
-    unzip awscliv2.zip /
+    
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip 
     sudo ./aws/install 
-    ```
+    
 
 ### Install Terraform
 ``` wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
