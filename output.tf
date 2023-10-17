@@ -1,3 +1,9 @@
+data "aws_region" "current" {}
+
+output "aws_region" {
+  value = data.aws_region.current.name
+}
+
 output "eks_cluster_name" {
   value = aws_eks_cluster.xyz_cluster.name
 }
@@ -21,6 +27,8 @@ output "private_subnet_az2" {
 output "vpc_id" {
   value = aws_vpc.main.id
 }
+
+
 
 # output "load_balancer_endpoint" {
 #   value = shellscript("kubectl get service my-app-service -o=jsonpath='{.status.loadBalancer.ingress[0].hostname}'")

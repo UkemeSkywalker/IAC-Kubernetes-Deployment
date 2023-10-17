@@ -11,6 +11,19 @@ resource "aws_eks_cluster" "xyz_cluster" {
   }
 }
 
+resource "aws_eks_node_group" "xyz_node_group" {
+  cluster_name    = aws_eks_cluster.xyz_cluster.name
+  node_group_name = "xyz-node-group"
+  node_role_arn   = aws_iam_role.eks_cluster.arn
+  subnet_ids      = [aws_subnet.private_subnet_az1.id, aws_subnet.private_subnet_az2.id]
+  instance_types  = ["t2.nano"] 
+  scaling_config {
+    desired_size = 2 
+    min_size     = 1
+    max_size     = 3
+  }
+}
+
 resource "aws_iam_role" "eks_cluster" {
   name = "eks-cluster-role-tf2"
 
@@ -22,6 +35,13 @@ resource "aws_iam_role" "eks_cluster" {
         Effect = "Allow",
         Principal = {
           Service = "eks.amazonaws.com"
+        }
+      },
+      {
+        Action = "sts:AssumeRole",
+        Effect = "Allow",
+        Principal = {
+          Service = "ec2.amazonaws.com"
         }
       }
     ]

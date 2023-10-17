@@ -11,6 +11,7 @@ Here we deploy a simple python application that exposes a REST endpoint that ret
 1.  install Docker cli
 2.  Install Terraform
 4.  Install AWS Cli
+5.  Install Kubectl
 
 
 ### Install docker
@@ -34,6 +35,13 @@ Update local packages by executing below command:
     wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
     echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
     sudo apt update && sudo apt install terraform 
+
+### Install Kubectl
+
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/linux/amd64/kubectl
+    chmod +x ./kubectl
+    sudo mv ./kubectl /usr/local/bin/kubectl
+    kubectl version --client
  
 ### Create AWS IAM User Access Key
 Iam User > Security Credentials > Create Access Keys
