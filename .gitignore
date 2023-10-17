@@ -1,6 +1,6 @@
 __pycache__
 .terraform
 .terraform.lock.hcl
-/aws
+aws
 awscliv2.zip
-/env
+env
