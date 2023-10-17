@@ -49,8 +49,6 @@ Iam User > Security Credentials > Create Access Keys
 ``` aws sts get-caller-identity```
 
 
-### Initialize Terraform
-``` terraform init ```
-``` terraform validate```
-``` terraform plan```
-``` terrafrom apply```
+### Run deployment script
+chmod +x deploy.sh
+./deploy.sh
