@@ -47,3 +47,7 @@ Iam User > Security Credentials > Create Access Keys
 
 ### Check current AWS User
 ``` aws sts get-caller-identity```
+
+
+### Initialize Terraform
+``` terraform init ```
