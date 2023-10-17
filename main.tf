@@ -1,19 +1,18 @@
 provider "aws" {
-  region = "us-west-1"  # Set your desired AWS region
+  region = "us-east-1"  
 }
 
 resource "aws_eks_cluster" "xyz_cluster" {
   name     = "xyz-eks-cluster"
   role_arn = aws_iam_role.eks_cluster.arn
-  version  = "1.21"  # Set your desired Kubernetes version
 
   vpc_config {
-    subnet_ids = aws_subnet.private.*.id
+    subnet_ids = [aws_subnet.private_subnet_az1.id, aws_subnet.private_subnet_az2.id ]
   }
 }
 
 resource "aws_iam_role" "eks_cluster" {
-  name = "eks-cluster-role"
+  name = "eks-cluster-role-tf2"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -29,14 +28,23 @@ resource "aws_iam_role" "eks_cluster" {
   })
 }
 
-resource "aws_subnet" "private" {
+resource "aws_subnet" "private_subnet_az1" {
   vpc_id                  = aws_vpc.main.id
-  count                   = 2  # Set the number of private subnets
-  cidr_block              = "10.0.1${count.index}.0/24"  # Set your desired CIDR block
-  availability_zone       = "us-west-1a"  # Set your desired availability zone
+  cidr_block              = "10.0.1.0/24"  # Set your desired CIDR block
+  availability_zone       = "us-east-1a"  # Set your desired availability zone
   map_public_ip_on_launch = false
   tags = {
-    Name = "private-subnet-${count.index}"
+    Name = "private-subnet-us-east-1a"
+  }
+}
+
+resource "aws_subnet" "private_subnet_az2" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.2.0/24"  # Set your desired CIDR block
+  availability_zone       = "us-east-1b"  # Set your desired availability zone
+  map_public_ip_on_launch = false
+  tags = {
+    Name = "private-subnet-us-east-1b"
   }
 }
 

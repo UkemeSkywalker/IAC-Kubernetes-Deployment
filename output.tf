@@ -10,8 +10,12 @@ output "eks_cluster_security_group_id" {
   value = aws_security_group.eks_cluster_sg.id
 }
 
-output "private_subnet_ids" {
-  value = aws_subnet.private[*].id
+output "private_subnet_az1" {
+  value = aws_subnet.private_subnet_az1.id
+}
+
+output "private_subnet_az2" {
+  value = aws_subnet.private_subnet_az2.id
 }
 
 output "vpc_id" {
