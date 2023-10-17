@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_eks_cluster" "xyz_cluster" {
-  name     = "my-eks-cluster"
+  name     = "xyz-eks-cluster"
   role_arn = aws_iam_role.eks_cluster.arn
   version  = "1.21"  # Set your desired Kubernetes version
 

@@ -7,11 +7,11 @@ Here we deploy a simple python application that exposes a REST endpoint that ret
 
 
 ## Prerequisites
+3.  Active AWS account
 1.  install Docker cli
 2.  Install Terraform
-3.  Own an active AWS account
-4.  Install AWS CLi
-5.  Pushed app docker image to ECR
+4.  Install AWS Cli
+
 
 ### Install docker
 Docker installation steps using default repository from Ubuntu
@@ -51,3 +51,6 @@ Iam User > Security Credentials > Create Access Keys
 
 ### Initialize Terraform
 ``` terraform init ```
+``` terraform validate```
+``` terraform plan```
+``` terrafrom apply```
