@@ -18,6 +18,6 @@ output "vpc_id" {
   value = aws_vpc.main.id
 }
 
-output "load_balancer_endpoint" {
-  value = shellscript("kubectl get service my-app-service -o=jsonpath='{.status.loadBalancer.ingress[0].hostname}'")
-}
+# output "load_balancer_endpoint" {
+#   value = shellscript("kubectl get service my-app-service -o=jsonpath='{.status.loadBalancer.ingress[0].hostname}'")
+# }
