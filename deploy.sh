@@ -7,7 +7,7 @@ terraform init
 terraform apply -auto-approve
 
 # Wait for EKS Cluster to be Ready
-CLUSTER_NAME="xyz_cluster"  
+CLUSTER_NAME="xyz-eks-cluster"  
 REGION="us-west-1"        
 
 echo "Waiting for EKS cluster $CLUSTER_NAME to be ready..."

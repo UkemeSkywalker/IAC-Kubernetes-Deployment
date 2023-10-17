@@ -30,25 +30,23 @@ Update local packages by executing below command:
     
 
 ### Install Terraform
-wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
- echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
- sudo apt update && sudo apt install terraform 
+
+    wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+    sudo apt update && sudo apt install terraform 
  
 ### Create AWS IAM User Access Key
 Iam User > Security Credentials > Create Access Keys
-    - Command Line Interface (CLI)
 
 ### Configure AWS
 ``` aws configure ```
-    - Insert your Access Key ID
-    - Insert Secret
-    - Insert region name
-    - Output format: json
+Add Access key details and region
 
 ### Check current AWS User
 ``` aws sts get-caller-identity```
 
 
 ### Run deployment script
-chmod +x deploy.sh
-./deploy.sh
+``` chmod +x deploy.sh
+    ./deploy.sh
+```
