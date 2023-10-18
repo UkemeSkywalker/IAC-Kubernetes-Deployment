@@ -7,11 +7,11 @@ terraform init
 terraform apply -auto-approve
 
 # # Retrieve EKS Cluster Name and Region from Terraform Output
-# EKS_CLUSTER_NAME=$(terraform output eks_cluster_name)
-# AWS_REGION=$(terraform output aws_region)
+EKS_CLUSTER_NAME=$(terraform output eks_cluster_name)
+AWS_REGION=$(terraform output aws_region)
 
 # # Configure kubectl with AWS CLI
-# aws eks --region $AWS_REGION update-kubeconfig --name $EKS_CLUSTER_NAME
+aws eks --region $AWS_REGION update-kubeconfig --name $EKS_CLUSTER_NAME
 
 # Apply Kubernetes Manifests (Deployment, Service, etc.)
 kubectl apply -f deployment.yaml
